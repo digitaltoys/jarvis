@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile
+    image: my-react-app # You can change this image name
+    container_name: my-react-app-container # You can change this container name
+    ports:
+      - "8080:80" # Map host port 8080 to container port 80 (Nginx default)
+    restart: unless-stopped
+    # (Optional) If you need to mount volumes, for example for Nginx logs or custom configs:
+    # volumes:
+    #   - ./nginx-logs:/var/log/nginx
+    #   - ./custom-nginx.conf:/etc/nginx/conf.d/default.conf:ro
